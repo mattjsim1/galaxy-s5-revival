@@ -39,21 +39,21 @@ For fun, we're going to recompile the LineageOS kernel and add driver modules th
 
 The Verizon S5 ships with a locked bootloader. I used the CID15 exploit and flashed an engineering test build of Android, which boots into Samsung's factory test environment (shown below). It's mostly a hardware readout with misc. testing apps.
 
-![Samsung factory test menu on the S5 after flashing an engineering build](C:\Users\admin\Projects\samsung_galaxy_s5\photos\engineering_build_crop.png)
+![Samsung factory test menu on the S5 after flashing an engineering build](photos/engineering_build_crop.png)
 
 ## Round One: postmarketOS
 
 I started with postmarketOS (based on Alpine Linux) and Sxmo (a minimal UI using Sway window manager) running on Wayland. Alpine Linux is known for very low overhead, and I initially thought it would be best for limited resources, but found the real world usability limited.
 
-![CID15 exploit with Engineering build for root](C:\Users\admin\Projects\samsung_galaxy_s5\photos\\photo-sxmo-menu_crop.png)
+![CID15 exploit with Engineering build for root](photos/photo-sxmo-menu_crop.png)
 
 It booted and the interface worked, but a lot of the phone didn't. The Sxmo menu has entries for all of the hardware, but most features weren't functional on this kernel. That's a lot to give up for real world usability.
 
-![fastfetch on postmarketOS on the S5](C:\Users\admin\Projects\samsung_galaxy_s5\photos\fastfetch_crop.png)
+![fastfetch on postmarketOS on the S5](photos/fastfetch_crop.png)
 
 After probing for working hardware IDs and binding them to the toggle scripts in Sxmo, testing measured postmarketOS using **~820 MB of RAM** (converted from MiB shown above) with the compositor, on screen keyboard, Sxmo daemons, etc as overhead. I wanted to see the resources we gained by going headless, without any graphics.
 
-I reflashed postmarketOS without graphical interfaces and ran the phone headless to see how much RAM the base system really needs. It came down to **~330 MB**, which matched my expectations. As a proof that the hardware was usable without a UI, I made the phone's green status LED blink as a "heartbeat" while the system is up. The kernel for this port was built without the `timer` and `heartbeat` LED triggers, so I had to get a little creative implenting this. Instead, [`usr/local/bin/led-heartbeat.sh`](usr/local/bin/led-heartbeat.sh) turns the trigger off and flashes the LED for 0.2 s every 3 seconds. I used OpenRC's `local` service so it started at boot. If the light stopped, I knew that the phone was frozen or off.
+I reflashed postmarketOS without graphical interfaces and ran the phone headless to see how much RAM the base system really needs. It came down to **~330 MB**, which matched my expectations. As a proof that the hardware was usable without a UI, I made the phone's green status LED blink as a "heartbeat" while the system is up. The kernel for this port was built without the `timer` and `heartbeat` LED triggers, so I had to get a little creative implenting this. Instead, [`files/led-heartbeat.sh`](files/led-heartbeat.sh) turns the trigger off and flashes the LED for 0.2 s every 3 seconds. I used OpenRC's `local` service so it started at boot. If the light stopped, I knew that the phone was frozen or off.
 
 ## Round Two: LineageOS 15.1
 
