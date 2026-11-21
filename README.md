@@ -39,17 +39,17 @@ For fun, we're going to recompile the LineageOS kernel and add driver modules th
 
 The Verizon S5 ships with a locked bootloader. I used the CID15 exploit and flashed an engineering test build of Android, which boots into Samsung's factory test environment (shown below). It's mostly a hardware readout with misc. testing apps.
 
-![Samsung factory test menu on the S5 after flashing an engineering build](photos/engineering_build_crop.png)
+<img src="photos/engineering_build_crop.png" alt="Samsung factory test menu on the S5 after flashing an engineering build" width="300">
 
 ## Round One: postmarketOS
 
 I started with postmarketOS (based on Alpine Linux) and Sxmo (a minimal UI using Sway window manager) running on Wayland. Alpine Linux is known for very low overhead, and I initially thought it would be best for limited resources, but found the real world usability limited.
 
-![CID15 exploit with Engineering build for root](photos/photo-sxmo-menu_crop.png)
+<img src="photos/photo-sxmo-menu_crop.png" alt="CID15 exploit with Engineering build for root" width="300">
 
 It booted and the interface worked, but a lot of the phone didn't. The Sxmo menu has entries for all of the hardware, but most features weren't functional on this kernel. That's a lot to give up for real world usability.
 
-![fastfetch on postmarketOS on the S5](photos/fastfetch_crop.png)
+<img src="photos/fastfetch_crop.png" alt="fastfetch on postmarketOS on the S5" width="500">
 
 After probing for working hardware IDs and binding them to the toggle scripts in Sxmo, testing measured postmarketOS using **~820 MB of RAM** (converted from MiB shown above) with the compositor, on screen keyboard, Sxmo daemons, etc as overhead. I wanted to see the resources we gained by going headless, without any graphics.
 
