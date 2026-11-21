@@ -1,3 +1,0 @@
-# Galaxy S5 (samsung,klte): give the Synaptics touchscreen a stable path for lisgd.
-# Install: doas install -m644 90-klte-touchscreen.rules /etc/udev/rules.d/
-SUBSYSTEM=="input", KERNEL=="event*", ATTRS{name}=="Synaptics s5100 A3 F", SYMLINK+="input/touchscreen"
