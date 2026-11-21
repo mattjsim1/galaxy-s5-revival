@@ -12,7 +12,7 @@ I've always had a talent to bring new life to old or broken things. Whether it b
 
 **2014 Samsung Galaxy S5, Verizon**
 
-- **Model:** SM-G900V / kltev
+- **Model:** SM-G900V / kltevzw
 - **Chipset:** Qualcomm Snapdragon 801, 4 cores (ARMv7) up to 2.5 GHz
 - **RAM:** 2 GB
 - **Storage:** 32 GB internal eMMC flash
@@ -38,7 +38,7 @@ The Verizon S5 ships with a locked bootloader. I used the CID15 exploit and flas
 I started with postmarketOS (based on Alpine Linux) and Sxmo (a minimal UI using Sway window manager) running on Wayland. Alpine Linux is known for very low overhead, and I initially thought it would be best for limited resources, but found the real world usability limited.
 
 <p align="center">
-  <img src="photos/photo-sxmo-menu_crop.png" alt="CID15 exploit with Engineering build for root" width="300">
+  <img src="photos/photo-sxmo-menu_crop.png" alt="Sxmo Menu" width="300">
 </p>
 
 It booted and the interface worked, but a lot of the phone didn't. The Sxmo menu has entries for all of the hardware, but most features weren't functional on this kernel. That's a lot to give up for real world usability.
@@ -70,8 +70,6 @@ First, I compared Low RAM mode on and off at idle, finding only a ~40MB differen
 
 The headless number shows how light Alpine is without a UI, but the phone is significantly more useful with LineageOS.
 
-<!-- TODO(matt): the heartbeat script is recovered from your claude.ai chat (led-heartbeat.sh). The ~330 MB headless number comes from your memory; the part of the shared chat I could read doesn't show it. -->
-
 ## LineageOS Install and Tuning
 
 - **Installed LineageOS 15.1** with `heimdall` (open source version of Samsung's Odin flashing tool), TWRP (replaces stock recovery image to load custom ROM) and `adb`. Before wiping anything I backed up the EFS and boot partitions and verified the checksums.
@@ -92,7 +90,7 @@ The headless number shows how light Alpine is without a UI, but the phone is sig
 
 Monitor mode, aka RFMON, is a hardware mode that turns off a WiFi chip's address filtering. This allows the OS to see traffic not addressed to a device's MAC address, instead of dropping it.
 
-For fun, we're going to recompile the LineageOS kernel and add driver modules that allow us to (legally) explore the networks around us.
+For fun, we're going to (legally) explore the networks around us.
 
 ## The postmarketOS files
 
