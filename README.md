@@ -96,6 +96,7 @@ The headless number shows how light Alpine is without a UI, but the phone is sig
 
 - `detect-klte-profile.sh`: dumps device values to build a Sxmo profile
 - `sxmo_deviceprofile_samsung,klte.sh`: Sxmo device profile (buttons, display, LEDs, Wi-Fi)
+- `led-heartbeat.sh`: blinks the green status LED every 3 s as a "system is alive" heartbeat so I could tell the headless phone was still up
 - `etc/udev/rules.d/90-klte-touchscreen.rules`: stable touchscreen device path for `lisgd`(allowing gestures to work in Sxmo). Added to `etc/udev/rules.d/`
 
 ## Tools
